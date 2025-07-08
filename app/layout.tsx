@@ -1,6 +1,8 @@
 import type React from "react"
 import type { Metadata } from "next"
 import "./globals.css"
+import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 export const metadata: Metadata = {
   title: "Basit Qayoom - CV | Software Development Engineer",
@@ -8,7 +10,7 @@ export const metadata: Metadata = {
     "Professional CV of Basit Qayoom, Software Development Engineer with expertise in React, Next.js, and modern web development.",
   keywords: "CV, Resume, Software Developer, React, Next.js, TypeScript, JavaScript",
   authors: [{ name: "Basit Qayoom" }],
-    generator: 'v0.dev'
+  generator: 'v0.dev'
 }
 
 export default function RootLayout({
@@ -25,6 +27,8 @@ export default function RootLayout({
         />
       </head>
       <body>{children}</body>
+      <SpeedInsights />
+      <Analytics />
     </html>
   )
 }
