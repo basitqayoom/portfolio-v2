@@ -48,7 +48,7 @@ export default function DocumentCV() {
           <div className="flex items-center gap-8">
             <div className="flex-shrink-0 transition-transform duration-300 hover:scale-105">
               <Image
-                src="/profile.jpg?height=150&width=150"
+                src="/profile.webp"
                 alt="Basit Qayoom"
                 width={150}
                 height={150}
@@ -362,7 +362,7 @@ export default function DocumentCV() {
                       href="https://drive.google.com/file/d/1YGRxJQzEduuQ4Ih9WaICg9qH2s9lhXb6/view"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-blue-600 hover:underline"
+                      className="inline-flex items-center gap-1 text-blue-800 font-bold underline hover:text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-offset-2"
                       title="IIT BHU Poster Link"
                     >
                       <LinkIcon className="w-4 h-4 inline" />
@@ -406,7 +406,7 @@ export default function DocumentCV() {
                       href="https://drive.google.com/file/d/1YGRxJQzEduuQ4Ih9WaICg9qH2s9lhXb6/view"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-blue-600 hover:underline"
+                      className="inline-flex items-center gap-1 text-blue-800 font-bold underline hover:text-blue-900 focus:outline-none focus:ring-2 focus:ring-blue-700 focus:ring-offset-2"
                       title="Best MUN Speaker Link"
                     >
                       <LinkIcon className="w-4 h-4 inline" />
