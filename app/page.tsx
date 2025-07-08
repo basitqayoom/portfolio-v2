@@ -40,29 +40,18 @@ export default function DocumentCV() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8 font-reddit">
+    <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-4xl mx-auto bg-white shadow-lg">
         {/* Header Section */}
         <div className="bg-gray-900 text-white p-8 relative">
-          {/* Download Button */}
-          <a
-            href="https://docs.google.com/document/d/1IFvyvIEd3dTraXOMphkI0wwZx_9W7ZYoud5vV6szSTs/edit?usp=sharing"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="absolute top-6 right-6 bg-white text-gray-900 p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg"
-            title="Download CV"
-          >
-            <Download className="w-5 h-5" />
-          </a>
-
           <div className="flex items-center gap-8">
             <div className="flex-shrink-0 transition-transform duration-300 hover:scale-105">
               <Image
-              src="/profile.jpg?height=150&width=150"
-              alt="Basit Qayoom"
-              width={150}
-              height={150}
-              className="rounded-full border-4 border-white shadow-lg"
+                src="/profile.jpg?height=150&width=150"
+                alt="Basit Qayoom"
+                width={150}
+                height={150}
+                className="rounded-full border-4 border-white shadow-lg"
               />
             </div>
             <div className="flex-1">
@@ -150,7 +139,7 @@ export default function DocumentCV() {
               >
                 <AccordionItem
                   value="physics-wallah"
-                  className="border border-gray-200 rounded-lg px-4"
+                  className="border border-gray-200 rounded-lg px-4 transition-colors duration-200 hover:bg-gray-100 hover:border-gray-400"
                   onMouseEnter={() => handleMouseEnter("physics-wallah")}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -217,7 +206,7 @@ export default function DocumentCV() {
 
                 <AccordionItem
                   value="iit-ropar"
-                  className="border border-gray-200 rounded-lg px-4"
+                  className="border border-gray-200 rounded-lg px-4 transition-colors duration-200 hover:bg-gray-100 hover:border-gray-400"
                   onMouseEnter={() => handleMouseEnter("iit-ropar")}
                   onMouseLeave={handleMouseLeave}
                 >
@@ -491,6 +480,17 @@ export default function DocumentCV() {
             </a>
           </div>
         </footer>
+
+        {/* Download Button - now fixed bottom left */}
+        <a
+          href="https://docs.google.com/document/d/1IFvyvIEd3dTraXOMphkI0wwZx_9W7ZYoud5vV6szSTs/edit?usp=sharing"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="fixed right-6 bottom-6 z-50 bg-white text-gray-900 p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg"
+          title="Download CV"
+        >
+          <Download className="w-5 h-5" />
+        </a>
       </div>
     </div>
   )
