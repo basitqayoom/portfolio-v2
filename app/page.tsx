@@ -15,6 +15,7 @@ import {
   LinkIcon,
   Linkedin,
   Globe,
+  Code2,
 } from "lucide-react"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import React, { useState, useRef } from "react"
@@ -475,8 +476,17 @@ export default function DocumentCV() {
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:text-gray-300 transition-colors"
             >
-              <Globe className="w-5 h-5" />
+              <Code2 className="w-5 h-5" />
               <span className="font-medium">LeetCode</span>
+            </a>
+            <a
+              href="https://iambqc.vercel.app/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 hover:text-gray-300 transition-colors"
+            >
+              <Globe className="w-5 h-5" />
+              <span className="font-medium">Portfolio v1</span>
             </a>
           </div>
         </footer>
