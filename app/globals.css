@@ -30,7 +30,6 @@ body {
   background-color: #f9f9f9; /* Set a light background color */
   margin: 0; /* Remove default margin */
   padding: 0; /* Remove default padding */
-  box-sizing: border-box; /* Use border-box model for all elements */
 }
 
 /* Reddit Sans font family */
@@ -99,21 +98,7 @@ html {
 }
 
 body {
-  will-change: transform;
   backface-visibility: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-img,
-svg,
-video,
-canvas {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-* {
-  box-sizing: border-box;
 }
