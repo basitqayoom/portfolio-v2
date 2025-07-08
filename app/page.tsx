@@ -386,6 +386,19 @@ export default function DocumentCV() {
                 <li className="flex gap-3">
                   <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
                   <div className="font-medium">
+                    Nominated for the "Champion of the Quarter" award at Physics Wallah for outstanding performance.
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
+                  <div className="font-medium">
+                    Nominated as Star Performer of the Year 2025 by Physics Wallah for exceptional contributions
+                    towards the company's growth and success.
+                  </div>
+                </li>
+                <li className="flex gap-3">
+                  <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
+                  <div className="font-medium">
                     Awarded Best Delegate in the International Press category at the Model United Nations held at NIT
                     Srinagar, recognizing excellence in research, communication, and integrity{" "}
                     <a
@@ -413,19 +426,6 @@ export default function DocumentCV() {
                   <div className="font-medium">
                     Led the Technical Club at NIT Srinagar, driving technology adoption and innovation by organizing
                     workshops, hackathons, and technical sessions that enriched the campus community.
-                  </div>
-                </li>
-                <li className="flex gap-3">
-                  <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
-                  <div className="font-medium">
-                    Nominated for the "Champion of the Quarter" award at Physics Wallah for outstanding performance.
-                  </div>
-                </li>
-                <li className="flex gap-3">
-                  <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
-                  <div className="font-medium">
-                    Nominated as Star Performer of the Year 2025 by Physics Wallah for exceptional contributions
-                    towards the company's growth and success.
                   </div>
                 </li>
               </ul>
