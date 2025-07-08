@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image"
 import {
   Mail,
@@ -15,8 +16,29 @@ import {
   Linkedin,
   Globe,
 } from "lucide-react"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import React, { useState, useRef } from "react"
 
 export default function DocumentCV() {
+  // State for controlled Accordion
+  const [openAccordion, setOpenAccordion] = useState<string | undefined>(undefined)
+  // Timer ref for hover delay
+  const hoverTimer = useRef<NodeJS.Timeout | null>(null)
+
+  // Helper to handle mouse enter/leave
+  const handleMouseEnter = (value: string) => {
+    hoverTimer.current = setTimeout(() => {
+      setOpenAccordion(value)
+    }, 300) // 300ms delay
+  }
+  const handleMouseLeave = () => {
+    if (hoverTimer.current) {
+      clearTimeout(hoverTimer.current)
+      hoverTimer.current = null
+    }
+    setOpenAccordion(undefined)
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 py-8 font-reddit">
       <div className="max-w-4xl mx-auto bg-white shadow-lg">
@@ -24,7 +46,7 @@ export default function DocumentCV() {
         <div className="bg-gray-900 text-white p-8 relative">
           {/* Download Button */}
           <a
-            href="https://drive.google.com/file/d/your-file-id/view?usp=sharing"
+            href="https://docs.google.com/document/d/1IFvyvIEd3dTraXOMphkI0wwZx_9W7ZYoud5vV6szSTs/edit?usp=sharing"
             target="_blank"
             rel="noopener noreferrer"
             className="absolute top-6 right-6 bg-white text-gray-900 p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg"
@@ -34,13 +56,13 @@ export default function DocumentCV() {
           </a>
 
           <div className="flex items-center gap-8">
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 transition-transform duration-300 hover:scale-105">
               <Image
-                src="/placeholder.svg?height=150&width=150"
-                alt="Basit Qayoom"
-                width={150}
-                height={150}
-                className="rounded-full border-4 border-white shadow-lg"
+              src="/profile.jpg?height=150&width=150"
+              alt="Basit Qayoom"
+              width={150}
+              height={150}
+              className="rounded-full border-4 border-white shadow-lg"
               />
             </div>
             <div className="flex-1">
@@ -49,19 +71,37 @@ export default function DocumentCV() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                 <div className="flex items-center gap-3">
                   <Phone className="w-4 h-4 text-gray-300" />
-                  <span className="font-medium">+(91) 9682132612</span>
+                  <a
+                    href="tel:+919682132612"
+                    className="font-medium hover:underline"
+                  >
+                    +(91) 9682132612
+                  </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail className="w-4 h-4 text-gray-300" />
-                  <span className="font-medium">basitqayoomchowdhary@gmail.com</span>
+                  <a
+                    href="mailto:basitqayoomchowdhary@gmail.com"
+                    className="font-medium hover:underline"
+                  >
+                    basitqayoomchowdhary@gmail.com
+                  </a>
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="w-4 h-4 text-gray-300" />
-                  <span className="font-medium">Srinagar, IN 190015</span>
+                  <span className="font-medium">Noida, IN 201309</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Github className="w-4 h-4 text-gray-300" />
-                  <span className="font-medium">github.com/basitqayoom</span>
+                  <a
+                    href="https://github.com/basitqayoom"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-medium hover:underline flex items-center gap-1"
+                  >
+                    github.com/basitqayoom
+                    <LinkIcon className="w-4 h-4 text-gray-300" />
+                  </a>
                 </div>
               </div>
             </div>
@@ -100,88 +140,120 @@ export default function DocumentCV() {
               <h3 className="text-2xl font-bold text-gray-900 tracking-wide">PROFESSIONAL EXPERIENCE</h3>
             </div>
 
-            <div className="border-l-4 border-gray-900 pl-6 space-y-8">
-              <div>
-                <div className="flex justify-between items-start mb-3">
-                  <div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-1">Software Development Engineer (SDE I)</h4>
-                    <p className="text-gray-600 font-semibold text-lg">Physics Wallah</p>
-                  </div>
-                  <span className="text-gray-600 font-medium bg-gray-100 px-3 py-1 rounded-full text-sm">
-                    July 2023 - Present
-                  </span>
-                </div>
-                <ul className="space-y-4 text-gray-700">
-                  <li className="flex gap-3">
-                    <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
-                    <div>
-                      <strong className="font-semibold">LMS Architectural Revamp & Performance Optimization:</strong>{" "}
-                      Transitioned a legacy iframe LMS to a modern micro-frontend architecture, reducing initial build
-                      size by 84% (from 12MB → under 2MB) and load time by 66% (from 15s → under 5s). Integrated dynamic
-                      remote loading, background service workers, and Sentry from the shell to each remote module,
-                      significantly improving user experience and system performance. Migrated fonts from TTF to WOFF2
-                      served via CDN and consolidated CSS, achieving a 3x reduction in asset size and faster load times.
+            <div className="border-l-4 border-gray-900 pl-6">
+              <Accordion
+                type="single"
+                collapsible
+                className="w-full space-y-4"
+                value={openAccordion}
+                onValueChange={setOpenAccordion}
+              >
+                <AccordionItem
+                  value="physics-wallah"
+                  className="border border-gray-200 rounded-lg px-4"
+                  onMouseEnter={() => handleMouseEnter("physics-wallah")}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <AccordionTrigger className="hover:no-underline">
+                    <div className="flex justify-between items-start w-full text-left">
+                      <div>
+                        <h4 className="text-xl font-bold text-gray-900 mb-1">Software Development Engineer (SDE)</h4>
+                        <p className="text-gray-600 font-semibold text-lg">Physics Wallah</p>
+                      </div>
+                      <span className="text-gray-600 font-medium bg-gray-100 px-3 py-1 rounded-full text-sm ml-4">
+                        July 2023 - Present
+                      </span>
                     </div>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
-                    <div>
-                      <strong className="font-semibold">UI Library Development:</strong> Built a complete in-house UI
-                      component library from scratch without external dependencies, supporting theme overrides, CSS
-                      Modules, and tree-shaking to ensure design consistency and scalability. All components are
-                      thoroughly documented with JSDoc and Storybook.
-                    </div>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
-                    <div>
-                      <strong className="font-semibold">Reusable Web SDK & Analytics Integration:</strong> Developed a
-                      modular SDK for authentication, token and cookie management, API clients, and local storage.
-                      Integrated analytics event tracking for Google Analytics, MoEngage, and Appsflyer, all driven by a
-                      global configuration model for easy integration across products.
-                    </div>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
-                    <div>
-                      <strong className="font-semibold">Monitoring & Developer Tooling:</strong> Created an in-house
-                      Core Web Vitals tracking system processing over 1 million daily entries, cutting third-party tool
-                      dependency and reducing operational costs. Standardized GitLab workflows across 80+ projects with
-                      commit rules, branch naming, MR templates, and README conventions. Developed a feature-based React
-                      boilerplate with Module Federation, ESLint, Husky pre-commit hooks, and automated changelogs.
-                      Conducted POCs using StencilJS, Lit.dev, and native HTML to build SEO-friendly web components.
-                    </div>
-                  </li>
-                </ul>
-              </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="pt-4">
+                    <ul className="space-y-4 text-gray-700">
+                      <li className="flex gap-3">
+                        <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
+                        <div>
+                          <strong className="font-semibold">
+                            LMS Architectural Revamp & Performance Optimization:
+                          </strong>{" "}
+                          Transitioned a legacy iframe LMS to a modern micro-frontend architecture, reducing initial
+                          build size by 84% (from 12MB → under 2MB) and load time by 66% (from 15s → under 5s).
+                          Integrated dynamic remote loading, background service workers, and Sentry from the shell to
+                          each remote module, significantly improving user experience and system performance. Migrated
+                          fonts from TTF to WOFF2 served via CDN and consolidated CSS, achieving a 3x reduction in asset
+                          size and faster load times.
+                        </div>
+                      </li>
+                      <li className="flex gap-3">
+                        <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
+                        <div>
+                          <strong className="font-semibold">UI Library Development:</strong> Built a complete in-house
+                          UI component library from scratch without external dependencies, supporting theme overrides,
+                          CSS Modules, and tree-shaking to ensure design consistency and scalability. All components are
+                          thoroughly documented with JSDoc and Storybook.
+                        </div>
+                      </li>
+                      <li className="flex gap-3">
+                        <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
+                        <div>
+                          <strong className="font-semibold">Reusable Web SDK & Analytics Integration:</strong> Developed
+                          a modular SDK for authentication, token and cookie management, API clients, and local storage.
+                          Integrated analytics event tracking for Google Analytics, MoEngage, and Appsflyer, all driven
+                          by a global configuration model for easy integration across products.
+                        </div>
+                      </li>
+                      <li className="flex gap-3">
+                        <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
+                        <div>
+                          <strong className="font-semibold">Monitoring & Developer Tooling:</strong> Created an in-house
+                          Core Web Vitals tracking system processing over 1 million daily entries, cutting third-party
+                          tool dependency and reducing operational costs. Standardized GitLab workflows across 80+
+                          projects with commit rules, branch naming, MR templates, and README conventions. Developed a
+                          feature-based React boilerplate with Module Federation, ESLint, Husky pre-commit hooks, and
+                          automated changelogs. Conducted POCs using StencilJS, Lit.dev, and native HTML to build
+                          SEO-friendly web components.
+                        </div>
+                      </li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
 
-              <div>
-                <div className="flex justify-between items-start mb-3">
-                  <div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-1">Project Intern</h4>
-                    <p className="text-gray-600 font-semibold text-lg">Indian Institute of Technology (IIT) Ropar</p>
-                  </div>
-                  <span className="text-gray-600 font-medium bg-gray-100 px-3 py-1 rounded-full text-sm">
-                    Dec 2021 - Jan 2022
-                  </span>
-                </div>
-                <ul className="space-y-4 text-gray-700">
-                  <li className="flex gap-3">
-                    <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
-                    <div>
-                      Developed a data-driven model to optimize chemical process workflows, achieving a 20% improvement
-                      in process efficiency through statistical analysis and simulation techniques.
+                <AccordionItem
+                  value="iit-ropar"
+                  className="border border-gray-200 rounded-lg px-4"
+                  onMouseEnter={() => handleMouseEnter("iit-ropar")}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <AccordionTrigger className="hover:no-underline">
+                    <div className="flex justify-between items-start w-full text-left">
+                      <div>
+                        <h4 className="text-xl font-bold text-gray-900 mb-1">Project Intern</h4>
+                        <p className="text-gray-600 font-semibold text-lg">
+                          Indian Institute of Technology (IIT) Ropar
+                        </p>
+                      </div>
+                      <span className="text-gray-600 font-medium bg-gray-100 px-3 py-1 rounded-full text-sm ml-4">
+                        Dec 2021 - Jan 2022
+                      </span>
                     </div>
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
-                    <div>
-                      Proposed an advanced resource management strategy based on utilization data, with strong potential
-                      to reduce operational costs and improve sustainability.
-                    </div>
-                  </li>
-                </ul>
-              </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="pt-4">
+                    <ul className="space-y-4 text-gray-700">
+                      <li className="flex gap-3">
+                        <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
+                        <div>
+                          Developed a data-driven model to optimize chemical process workflows, achieving a 20%
+                          improvement in process efficiency through statistical analysis and simulation techniques.
+                        </div>
+                      </li>
+                      <li className="flex gap-3">
+                        <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
+                        <div>
+                          Proposed an advanced resource management strategy based on utilization data, with strong
+                          potential to reduce operational costs and improve sustainability.
+                        </div>
+                      </li>
+                    </ul>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
             </div>
           </section>
 
@@ -295,7 +367,17 @@ export default function DocumentCV() {
                   <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
                   <div className="font-medium">
                     Presented a poster on wood-based nanotechnology membranes at the 2023 Nanotechnology for Better
-                    Living conference (NIT Srinagar, SKUAST, IIT BHU). [Link]
+                    Living conference (NIT Srinagar, SKUAST, IIT BHU).{" "}
+                    <a
+                      href="https://drive.google.com/file/d/1YGRxJQzEduuQ4Ih9WaICg9qH2s9lhXb6/view"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-blue-600 hover:underline"
+                      title="IIT BHU Poster Link"
+                    >
+                      <LinkIcon className="w-4 h-4 inline" />
+                      Link
+                    </a>
                   </div>
                 </li>
               </ul>
@@ -316,7 +398,18 @@ export default function DocumentCV() {
                   <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
                   <div className="font-medium">
                     Awarded Best Delegate in the International Press category at the Model United Nations held at NIT
-                    Srinagar, recognizing excellence in research, communication, and integrity [Link].
+                    Srinagar, recognizing excellence in research, communication, and integrity{" "}
+                    <a
+                      href="https://drive.google.com/file/d/1YGRxJQzEduuQ4Ih9WaICg9qH2s9lhXb6/view"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-blue-600 hover:underline"
+                      title="Best MUN Speaker Link"
+                    >
+                      <LinkIcon className="w-4 h-4 inline" />
+                      Link
+                    </a>
+                    .
                   </div>
                 </li>
                 <li className="flex gap-3">
@@ -339,12 +432,19 @@ export default function DocumentCV() {
                     Nominated for the "Champion of the Quarter" award at Physics Wallah for outstanding performance.
                   </div>
                 </li>
+                <li className="flex gap-3">
+                  <span className="w-2 h-2 bg-gray-900 rounded-full mt-2 flex-shrink-0"></span>
+                  <div className="font-medium">
+                    Nominated as Star Performer of the Year 2025 by Physics Wallah for exceptional contributions
+                    towards the company's growth and success.
+                  </div>
+                </li>
               </ul>
             </div>
           </section>
 
           {/* Links */}
-          <section className="mb-8">
+          {/* <section className="mb-8">
             <div className="flex items-center gap-3 mb-4">
               <div className="bg-gray-900 p-2 rounded-lg">
                 <LinkIcon className="w-5 h-5 text-white" />
@@ -356,14 +456,14 @@ export default function DocumentCV() {
                 LeetCode: basitqayoomchowdhary | GitHub: basitqayoom | LinkedIn: iambqc
               </p>
             </div>
-          </section>
+          </section> */}
         </div>
 
         {/* Footer */}
         <footer className="bg-gray-900 text-white p-6">
           <div className="flex justify-center items-center space-x-8">
             <a
-              href="https://linkedin.com/in/iambqc"
+              href="https://www.linkedin.com/in/bqc/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:text-gray-300 transition-colors"
@@ -381,7 +481,7 @@ export default function DocumentCV() {
               <span className="font-medium">GitHub</span>
             </a>
             <a
-              href="https://leetcode.com/basitqayoomchowdhary"
+              href="https://leetcode.com/u/basitqayoomchowdhary/"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 hover:text-gray-300 transition-colors"
