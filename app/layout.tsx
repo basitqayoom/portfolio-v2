@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import "./globals.css"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
+import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
   title: "Basit Qayoom - CV | Software Development Engineer",
@@ -26,7 +27,17 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+
+        </ThemeProvider>
+      </body>
       <SpeedInsights />
       <Analytics />
     </html>
