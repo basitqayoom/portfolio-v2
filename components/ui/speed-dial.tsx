@@ -64,7 +64,7 @@ export default function SpeedDial() {
                     >
                         {action.icon}
                         <span
-                            className="ml-2 whitespace-nowrap hidden sm:inline-block opacity-100 max-w-xs"
+                            className="ml-2 whitespace-nowrap sm:inline-block opacity-100 max-w-xs"
                             style={{ transitionProperty: 'none', maxWidth: '8rem' }}
                         >
                             {action.label}
