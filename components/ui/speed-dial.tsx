@@ -4,37 +4,37 @@ import { Phone, Mail, Github, Code2, Linkedin, Download, ChevronUp } from "lucid
 
 const actions = [
     {
-        icon: <Phone className="w-5 h-5" />,
+        icon: <Phone className="w-5 h-5 text-gray-900" />, // Call
         label: "Call",
         href: "tel:+919682132612",
         color: "bg-green-600 hover:bg-green-700 text-white",
     },
     {
-        icon: <Mail className="w-5 h-5" />,
+        icon: <Mail className="w-5 h-5 text-gray-900" />, // Email
         label: "Email",
         href: "mailto:basitqayoomchowdhary@gmail.com",
         color: "bg-blue-700 hover:bg-blue-800 text-white",
     },
     {
-        icon: <Github className="w-5 h-5" />,
+        icon: <Github className="w-5 h-5 text-gray-900" />, // GitHub
         label: "GitHub",
         href: "https://github.com/basitqayoom",
         color: "bg-gray-900 hover:bg-gray-800 text-white",
     },
     {
-        icon: <Code2 className="w-5 h-5" />,
+        icon: <Code2 className="w-5 h-5 text-gray-900" />, // LeetCode
         label: "LeetCode",
         href: "https://leetcode.com/u/basitqayoomchowdhary/",
         color: "bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold",
     },
     {
-        icon: <Linkedin className="w-5 h-5" />,
+        icon: <Linkedin className="w-5 h-5 text-gray-900" />, // LinkedIn
         label: "LinkedIn",
         href: "https://www.linkedin.com/in/bqc/",
         color: "bg-blue-900 hover:bg-blue-700 text-white",
     },
     {
-        icon: <Download className="w-5 h-5" />,
+        icon: <Download className="w-5 h-5 text-gray-900" />, // Download CV
         label: "Download CV",
         href: "https://docs.google.com/document/d/1IFvyvIEd3dTraXOMphkI0wwZx_9W7ZYoud5vV6szSTs/edit?usp=sharing",
         color: "bg-white hover:bg-gray-200 text-gray-900 border border-gray-300 font-semibold",
@@ -57,14 +57,16 @@ export default function SpeedDial() {
                         href={action.href}
                         target={action.href.startsWith('http') ? '_blank' : undefined}
                         rel={action.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                        className={`flex items-center px-3 py-2 rounded-full shadow-xl font-semibold text-sm transition-all duration-300 overflow-hidden ${action.color} w-44`}
+                        className={`flex items-center gap-3 px-4 py-2 rounded-2xl font-semibold text-base transition-all duration-300 overflow-hidden w-48 backdrop-blur-md bg-white/30 shadow-2xl border border-white/40 hover:scale-105 active:scale-100 hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.18)] ${action.color}`}
                         title={action.label}
                         tabIndex={open ? 0 : -1}
-                        style={{ boxShadow: '0 4px 24px 0 rgba(0,0,0,0.18)', minWidth: '2.5rem', maxWidth: '11rem' }}
+                        style={{ boxShadow: '0 8px 32px 0 rgba(31,38,135,0.18)', minWidth: '2.5rem', maxWidth: '12rem', WebkitBackdropFilter: 'blur(8px)', backdropFilter: 'blur(8px)', background: 'linear-gradient(135deg, rgba(255,255,255,0.35) 0%, rgba(245,245,255,0.18) 100%)' }}
                     >
-                        {action.icon}
+                        <span className="flex items-center justify-center w-8 h-8 rounded-full shadow-inner mr-2">
+                            {action.icon}
+                        </span>
                         <span
-                            className="ml-2 whitespace-nowrap sm:inline-block opacity-100 max-w-xs"
+                            className="whitespace-nowrap sm:inline-block opacity-100 max-w-xs font-medium text-gray-900 drop-shadow"
                             style={{ transitionProperty: 'none', maxWidth: '8rem' }}
                         >
                             {action.label}
