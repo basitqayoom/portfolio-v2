@@ -1,0 +1,20 @@
+{
+  "name": "Basit Qayoom - Software Engineer Portfolio",
+  "short_name": "Basit Qayoom",
+  "description": "Professional portfolio of Basit Qayoom, Software Engineer specializing in React, Next.js, and micro-frontend architectures",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/profile.ico",
+      "sizes": "any",
+      "type": "image/x-icon"
+    }
+  ],
+  "categories": ["portfolio", "development", "technology"],
+  "lang": "en-US",
+  "dir": "ltr"
+}
