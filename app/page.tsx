@@ -37,7 +37,7 @@ export default function ModernPortfolio() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative overflow-hidden bg-white border-b border-gray-200">
 
@@ -324,122 +324,185 @@ export default function ModernPortfolio() {
           </div>
 
           <Tabs defaultValue="frontend" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 bg-white border border-gray-200 p-1 h-auto rounded-lg">
-              <TabsTrigger value="frontend" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+            <TabsList className="grid w-full grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 bg-gradient-to-r from-gray-50 to-blue-50 border-2 border-gray-200 p-2 h-auto rounded-xl shadow-sm">
+              <TabsTrigger value="frontend" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-lg transition-all duration-300 hover:bg-gray-100">
                 Frontend
               </TabsTrigger>
-              <TabsTrigger value="backend" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+              <TabsTrigger value="backend" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-lg transition-all duration-300 hover:bg-gray-100">
                 Backend
               </TabsTrigger>
-              <TabsTrigger value="languages" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+              <TabsTrigger value="languages" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-lg transition-all duration-300 hover:bg-gray-100">
                 Languages
               </TabsTrigger>
-              <TabsTrigger value="devops" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+              <TabsTrigger value="devops" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-lg transition-all duration-300 hover:bg-gray-100">
                 DevOps
               </TabsTrigger>
-              <TabsTrigger value="build" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+              <TabsTrigger value="build" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-lg transition-all duration-300 hover:bg-gray-100">
                 Build Tools
               </TabsTrigger>
-              <TabsTrigger value="testing" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+              <TabsTrigger value="testing" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-lg transition-all duration-300 hover:bg-gray-100">
                 Testing
               </TabsTrigger>
-              <TabsTrigger value="other" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white">
+              <TabsTrigger value="other" className="data-[state=active]:bg-blue-600 data-[state=active]:text-white data-[state=active]:shadow-lg rounded-lg transition-all duration-300 hover:bg-gray-100">
                 Other
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="frontend" className="mt-6">
-              <Card className="border border-gray-200 shadow-sm bg-white">
-                <CardContent className="p-6">
-                  <div className="flex flex-wrap gap-2">
-                    {skills.frontend.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 transition-colors text-gray-800 border border-gray-300">
-                        {skill}
-                      </Badge>
+            <TabsContent value="frontend" className="mt-8">
+              <Card className="border-2 border-gray-200 shadow-lg bg-gradient-to-br from-white to-gray-50 overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600 opacity-5 rounded-full -mr-16 -mt-16"></div>
+                <CardContent className="p-8 relative">
+                  <div className="flex flex-wrap gap-3">
+                    {skills.frontend.map((skill, index) => (
+                      <div
+                        key={skill}
+                        className="group relative"
+                        style={{ animationDelay: `${index * 0.05}s` }}
+                      >
+                        <div className="relative px-4 py-2.5 bg-white text-gray-700 rounded-lg font-medium border-2 border-gray-200 hover:border-blue-500 hover:shadow-md transition-all duration-300 cursor-default">
+                          <span className="relative z-10 text-sm">{skill}</span>
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <div className="absolute -bottom-1 left-0 right-0 h-1 bg-blue-600 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                      </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
             </TabsContent>
 
-            <TabsContent value="backend" className="mt-6">
-              <Card className="border border-gray-200 shadow-sm bg-white">
-                <CardContent className="p-6">
-                  <div className="flex flex-wrap gap-2">
-                    {skills.backend.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 transition-colors text-gray-800 border border-gray-300">
-                        {skill}
-                      </Badge>
+            <TabsContent value="backend" className="mt-8">
+              <Card className="border-2 border-gray-200 shadow-lg bg-gradient-to-br from-white to-gray-50 overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600 opacity-5 rounded-full -mr-16 -mt-16"></div>
+                <CardContent className="p-8 relative">
+                  <div className="flex flex-wrap gap-3">
+                    {skills.backend.map((skill, index) => (
+                      <div
+                        key={skill}
+                        className="group relative"
+                        style={{ animationDelay: `${index * 0.05}s` }}
+                      >
+                        <div className="relative px-4 py-2.5 bg-white text-gray-700 rounded-lg font-medium border-2 border-gray-200 hover:border-blue-500 hover:shadow-md transition-all duration-300 cursor-default">
+                          <span className="relative z-10 text-sm">{skill}</span>
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <div className="absolute -bottom-1 left-0 right-0 h-1 bg-blue-600 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                      </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
             </TabsContent>
 
-            <TabsContent value="languages" className="mt-6">
-              <Card className="border border-gray-200 shadow-sm bg-white">
-                <CardContent className="p-6">
-                  <div className="flex flex-wrap gap-2">
-                    {skills.languages.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 transition-colors text-gray-800 border border-gray-300">
-                        {skill}
-                      </Badge>
+            <TabsContent value="languages" className="mt-8">
+              <Card className="border-2 border-gray-200 shadow-lg bg-gradient-to-br from-white to-gray-50 overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600 opacity-5 rounded-full -mr-16 -mt-16"></div>
+                <CardContent className="p-8 relative">
+                  <div className="flex flex-wrap gap-3">
+                    {skills.languages.map((skill, index) => (
+                      <div
+                        key={skill}
+                        className="group relative"
+                        style={{ animationDelay: `${index * 0.05}s` }}
+                      >
+                        <div className="relative px-4 py-2.5 bg-white text-gray-700 rounded-lg font-medium border-2 border-gray-200 hover:border-blue-500 hover:shadow-md transition-all duration-300 cursor-default">
+                          <span className="relative z-10 text-sm">{skill}</span>
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <div className="absolute -bottom-1 left-0 right-0 h-1 bg-blue-600 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                      </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
             </TabsContent>
 
-            <TabsContent value="devops" className="mt-6">
-              <Card className="border border-gray-200 shadow-sm bg-white">
-                <CardContent className="p-6">
-                  <div className="flex flex-wrap gap-2">
-                    {skills.devops.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 transition-colors text-gray-800 border border-gray-300">
-                        {skill}
-                      </Badge>
+            <TabsContent value="devops" className="mt-8">
+              <Card className="border-2 border-gray-200 shadow-lg bg-gradient-to-br from-white to-gray-50 overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600 opacity-5 rounded-full -mr-16 -mt-16"></div>
+                <CardContent className="p-8 relative">
+                  <div className="flex flex-wrap gap-3">
+                    {skills.devops.map((skill, index) => (
+                      <div
+                        key={skill}
+                        className="group relative"
+                        style={{ animationDelay: `${index * 0.05}s` }}
+                      >
+                        <div className="relative px-4 py-2.5 bg-white text-gray-700 rounded-lg font-medium border-2 border-gray-200 hover:border-blue-500 hover:shadow-md transition-all duration-300 cursor-default">
+                          <span className="relative z-10 text-sm">{skill}</span>
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <div className="absolute -bottom-1 left-0 right-0 h-1 bg-blue-600 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                      </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
             </TabsContent>
 
-            <TabsContent value="build" className="mt-6">
-              <Card className="border border-gray-200 shadow-sm bg-white">
-                <CardContent className="p-6">
-                  <div className="flex flex-wrap gap-2">
-                    {skills.build.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 transition-colors text-gray-800 border border-gray-300">
-                        {skill}
-                      </Badge>
+            <TabsContent value="build" className="mt-8">
+              <Card className="border-2 border-gray-200 shadow-lg bg-gradient-to-br from-white to-gray-50 overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600 opacity-5 rounded-full -mr-16 -mt-16"></div>
+                <CardContent className="p-8 relative">
+                  <div className="flex flex-wrap gap-3">
+                    {skills.build.map((skill, index) => (
+                      <div
+                        key={skill}
+                        className="group relative"
+                        style={{ animationDelay: `${index * 0.05}s` }}
+                      >
+                        <div className="relative px-4 py-2.5 bg-white text-gray-700 rounded-lg font-medium border-2 border-gray-200 hover:border-blue-500 hover:shadow-md transition-all duration-300 cursor-default">
+                          <span className="relative z-10 text-sm">{skill}</span>
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <div className="absolute -bottom-1 left-0 right-0 h-1 bg-blue-600 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                      </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
             </TabsContent>
 
-            <TabsContent value="testing" className="mt-6">
-              <Card className="border border-gray-200 shadow-sm bg-white">
-                <CardContent className="p-6">
-                  <div className="flex flex-wrap gap-2">
-                    {skills.testing.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 transition-colors text-gray-800 border border-gray-300">
-                        {skill}
-                      </Badge>
+            <TabsContent value="testing" className="mt-8">
+              <Card className="border-2 border-gray-200 shadow-lg bg-gradient-to-br from-white to-gray-50 overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600 opacity-5 rounded-full -mr-16 -mt-16"></div>
+                <CardContent className="p-8 relative">
+                  <div className="flex flex-wrap gap-3">
+                    {skills.testing.map((skill, index) => (
+                      <div
+                        key={skill}
+                        className="group relative"
+                        style={{ animationDelay: `${index * 0.05}s` }}
+                      >
+                        <div className="relative px-4 py-2.5 bg-white text-gray-700 rounded-lg font-medium border-2 border-gray-200 hover:border-blue-500 hover:shadow-md transition-all duration-300 cursor-default">
+                          <span className="relative z-10 text-sm">{skill}</span>
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <div className="absolute -bottom-1 left-0 right-0 h-1 bg-blue-600 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                      </div>
                     ))}
                   </div>
                 </CardContent>
               </Card>
             </TabsContent>
 
-            <TabsContent value="other" className="mt-6">
-              <Card className="border border-gray-200 shadow-sm bg-white">
-                <CardContent className="p-6">
-                  <div className="flex flex-wrap gap-2">
-                    {skills.other.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="px-3 py-1.5 text-sm bg-gray-100 hover:bg-gray-200 transition-colors text-gray-800 border border-gray-300">
-                        {skill}
-                      </Badge>
+            <TabsContent value="other" className="mt-8">
+              <Card className="border-2 border-gray-200 shadow-lg bg-gradient-to-br from-white to-gray-50 overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-600 opacity-5 rounded-full -mr-16 -mt-16"></div>
+                <CardContent className="p-8 relative">
+                  <div className="flex flex-wrap gap-3">
+                    {skills.other.map((skill, index) => (
+                      <div
+                        key={skill}
+                        className="group relative"
+                        style={{ animationDelay: `${index * 0.05}s` }}
+                      >
+                        <div className="relative px-4 py-2.5 bg-white text-gray-700 rounded-lg font-medium border-2 border-gray-200 hover:border-blue-500 hover:shadow-md transition-all duration-300 cursor-default">
+                          <span className="relative z-10 text-sm">{skill}</span>
+                          <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        </div>
+                        <div className="absolute -bottom-1 left-0 right-0 h-1 bg-blue-600 rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
+                      </div>
                     ))}
                   </div>
                 </CardContent>
@@ -448,19 +511,29 @@ export default function ModernPortfolio() {
           </Tabs>
 
           {/* Soft Skills Card */}
-          <Card className="mt-6 border border-gray-200 shadow-sm bg-white">
-            <CardHeader>
-              <CardTitle className="flex items-center gap-2">
-                <User className="w-5 h-5 text-gray-600" />
-                Soft Skills
+          <Card className="mt-8 border-2 border-gray-200 shadow-lg bg-gradient-to-br from-white via-blue-50/20 to-gray-50 overflow-hidden">
+            <div className="absolute top-0 left-0 w-40 h-40 bg-blue-600 opacity-5 rounded-full -ml-20 -mt-20"></div>
+            <CardHeader className="relative">
+              <CardTitle className="flex items-center gap-3">
+                <div className="p-2 bg-blue-600 rounded-lg">
+                  <User className="w-5 h-5 text-white" />
+                </div>
+                <span className="text-xl font-bold text-gray-900">Soft Skills</span>
               </CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-2">
-                {["Leadership", "Cross-Functional Collaboration", "Decision-Making", "Adaptability", "Conflict Resolution", "Critical Thinking", "Time & Task Management", "Communication", "Problem-Solving", "Accountability", "Attention to Detail", "Strategic Thinking"].map((skill) => (
-                  <Badge key={skill} variant="outline" className="px-3 py-1.5 text-sm border-gray-300 text-gray-700 hover:bg-gray-100 transition-colors">
-                    {skill}
-                  </Badge>
+            <CardContent className="relative">
+              <div className="flex flex-wrap gap-3">
+                {["Leadership", "Cross-Functional Collaboration", "Decision-Making", "Adaptability", "Conflict Resolution", "Critical Thinking", "Time & Task Management", "Communication", "Problem-Solving", "Accountability", "Attention to Detail", "Strategic Thinking"].map((skill, index) => (
+                  <div
+                    key={skill}
+                    className="group relative"
+                    style={{ animationDelay: `${index * 0.05}s` }}
+                  >
+                    <div className="relative px-4 py-2.5 bg-white text-gray-700 rounded-full font-medium border-2 border-gray-300 hover:border-blue-500 hover:shadow-md transition-all duration-300 cursor-default">
+                      <span className="relative z-10 text-sm">{skill}</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                  </div>
                 ))}
               </div>
             </CardContent>
